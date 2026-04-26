@@ -1,6 +1,6 @@
 import { Check } from "lucide-react";
-import { LAYOUT_OPTIONS, THEMES } from "../constants/themes";
-import type { CardData, ImageShape, LayoutKey, ThemeKey } from "../types/card";
+import { TEMPLATE_OPTIONS, THEMES } from "../constants/themes";
+import type { CardData, ImageShape, TemplateKey, ThemeKey } from "../types/card";
 
 interface DesignSectionProps {
   card: CardData;
@@ -36,15 +36,15 @@ export default function DesignSection({ card, updateCard }: DesignSectionProps) 
         </div>
       </fieldset>
       <fieldset className="field-group">
-        <legend>レイアウト</legend>
+        <legend>テンプレート</legend>
         <div className="choice-grid">
-          {LAYOUT_OPTIONS.map((option) => (
+          {TEMPLATE_OPTIONS.map((option) => (
             <button
               type="button"
               key={option.value}
               className={card.layout === option.value ? "choice-button is-selected" : "choice-button"}
               aria-pressed={card.layout === option.value}
-              onClick={() => updateCard("layout", option.value as LayoutKey)}
+              onClick={() => updateCard("layout", option.value as TemplateKey)}
             >
               <span>{option.label}</span>
               <small>{option.description}</small>

@@ -45,15 +45,25 @@ export const THEMES: Record<
   },
 };
 
-export const LAYOUT_OPTIONS = [
+export const TEMPLATE_OPTIONS = [
   {
-    value: "photo",
-    label: "写真上部型",
-    description: "画像を大きめに見せる",
+    value: "classic",
+    label: "ノートクラシック",
+    description: "基本のノート風",
   },
   {
-    value: "info",
-    label: "情報整理型",
-    description: "情報の読みやすさを優先",
+    value: "conversation",
+    label: "会話きっかけ型",
+    description: "話題を大きく表示",
+  },
+  {
+    value: "clean",
+    label: "すっきりプロフィール型",
+    description: "社員向けに整える",
+  },
+  {
+    value: "collage",
+    label: "付箋コラージュ型",
+    description: "少し楽しい印象",
   },
 ] as const;

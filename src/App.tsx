@@ -3,6 +3,7 @@ import AppHeader from "./components/AppHeader";
 import CreatorLayout from "./components/CreatorLayout";
 import IntroScreen from "./components/IntroScreen";
 import type { CardData } from "./types/card";
+import type { TemplateKey } from "./types/card";
 import { INITIAL_TAGS } from "./constants/tags";
 
 const initialCard: CardData = {
@@ -17,7 +18,7 @@ const initialCard: CardData = {
   imageDataUrl: null,
   imageName: "",
   theme: "sage",
-  layout: "photo",
+  layout: "classic",
   imageShape: "rounded",
 };
 
@@ -30,6 +31,11 @@ export default function App() {
     setCard(initialCard);
   };
 
+  const startCreator = (template: TemplateKey = "classic") => {
+    setCard({ ...card, layout: template });
+    setMode("creator");
+  };
+
   return (
     <div className="app-shell">
       <AppHeader
@@ -38,7 +44,7 @@ export default function App() {
         onReset={resetCard}
       />
       {mode === "intro" ? (
-        <IntroScreen sample={initialCard} onStart={() => setMode("creator")} />
+        <IntroScreen onStart={startCreator} />
       ) : (
         <CreatorLayout
           card={card}

@@ -1,6 +1,6 @@
 export type ParticipantType = "student" | "employee" | "other";
 export type ThemeKey = "sage" | "mint" | "apricot" | "lavender";
-export type LayoutKey = "photo" | "info";
+export type TemplateKey = "classic" | "conversation" | "clean" | "collage";
 export type ImageShape = "rounded" | "circle";
 
 export interface CardData {
@@ -15,6 +15,6 @@ export interface CardData {
   imageDataUrl: string | null;
   imageName: string;
   theme: ThemeKey;
-  layout: LayoutKey;
+  layout: TemplateKey;
   imageShape: ImageShape;
 }
