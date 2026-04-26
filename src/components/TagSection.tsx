@@ -30,7 +30,7 @@ export default function TagSection({ card, updateCard }: TagSectionProps) {
     <section className="form-section" aria-labelledby="tag-heading">
       <div className="section-title-row">
         <h2 id="tag-heading">
-          <span className="sticky-label">タグ</span>
+          <span className="sticky-label">タグ・画像</span>
         </h2>
         <span className="counter">{card.tags.length}/3</span>
       </div>

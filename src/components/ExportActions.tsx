@@ -12,11 +12,22 @@ export default function ExportActions({ targetRef, compact = false }: ExportActi
   const [status, setStatus] = useState("");
   const [lastImageUrl, setLastImageUrl] = useState("");
 
+  const waitForImages = async (target: HTMLElement) => {
+    const images = Array.from(target.querySelectorAll("img"));
+    await Promise.all(
+      images.map((image) => {
+        if (image.complete && image.naturalWidth > 0) return Promise.resolve();
+        return image.decode().catch(() => undefined);
+      }),
+    );
+  };
+
   const exportImage = async () => {
     if (!targetRef.current) return;
 
     setStatus("画像を生成しています。");
     try {
+      await waitForImages(targetRef.current);
       const rect = targetRef.current.getBoundingClientRect();
       const pixelRatio = Math.max(2, 1080 / rect.width);
       const dataUrl = await toPng(targetRef.current, {

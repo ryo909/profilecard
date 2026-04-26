@@ -4,13 +4,13 @@ import type { CardData } from "../types/card";
 
 interface ImageUploadSectionProps {
   card: CardData;
-  updateCard: <K extends keyof CardData>(key: K, value: CardData[K]) => void;
+  onChange: (card: CardData) => void;
 }
 
 const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
 const ACCEPTED_TYPES = ["image/jpeg", "image/png", "image/webp"];
 
-export default function ImageUploadSection({ card, updateCard }: ImageUploadSectionProps) {
+export default function ImageUploadSection({ card, onChange }: ImageUploadSectionProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState("");
 
@@ -34,24 +34,30 @@ export default function ImageUploadSection({ card, updateCard }: ImageUploadSect
 
     const reader = new FileReader();
     reader.onload = () => {
-      updateCard("imageDataUrl", String(reader.result));
-      updateCard("imageName", file.name);
+      onChange({
+        ...card,
+        imageDataUrl: String(reader.result),
+        imageName: file.name,
+      });
     };
     reader.readAsDataURL(file);
   };
 
   const removeImage = () => {
-    updateCard("imageDataUrl", null);
-    updateCard("imageName", "");
+    onChange({
+      ...card,
+      imageDataUrl: null,
+      imageName: "",
+    });
     if (inputRef.current) inputRef.current.value = "";
   };
 
   return (
-    <section className="form-section" aria-labelledby="image-heading">
+    <section className="form-section compact-subsection" aria-labelledby="image-heading">
       <h2 id="image-heading">
-        <span className="sticky-label">カード画像</span>
+        <span className="sub-label">画像アップロード</span>
       </h2>
-      <p className="field-note">画像はこの端末内でプレビューされます。サーバーには保存されません。</p>
+      <p className="field-note">画像は端末内でプレビューされます。</p>
       <div className="upload-box">
         <div className="upload-thumb" data-shape={card.imageShape}>
           {card.imageDataUrl ? (

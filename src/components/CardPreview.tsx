@@ -52,19 +52,18 @@ const CardPreview = forwardRef<HTMLDivElement, CardPreviewProps>(function CardPr
             </div>
           </header>
 
-          <section className="card-section statement-section">
-            <span className="card-label">ひとことで言うと</span>
-            <p>{card.tagline || "入力するとここに表示されます。"}</p>
+          <section className="memo-block talk-block featured-talk">
+            <span className="card-label is-primary">話しかけてほしい話題</span>
+            <p>{card.topics || "おすすめのカフェや本の話"}</p>
           </section>
-
           <section className="memo-grid">
+            <div className="memo-block">
+              <span className="card-label">ひとことで言うと</span>
+              <p>{card.tagline || "入力するとここに表示されます。"}</p>
+            </div>
             <div className="memo-block">
               <span className="card-label">最近ハマっていること</span>
               <p>{card.interest || "カフェ巡り、読書、散歩"}</p>
-            </div>
-            <div className="memo-block talk-block">
-              <span className="card-label is-primary">話しかけてほしい話題</span>
-              <p>{card.topics || "おすすめのカフェや本の話"}</p>
             </div>
           </section>
 

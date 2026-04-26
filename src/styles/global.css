@@ -39,9 +39,10 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background:
-    linear-gradient(transparent 31px, rgba(111, 143, 92, 0.08) 32px),
+    radial-gradient(circle at 18px 18px, rgba(73, 99, 63, 0.045) 1px, transparent 1.5px),
+    linear-gradient(transparent 35px, rgba(111, 143, 92, 0.045) 36px),
     #f8f2e8;
-  background-size: 100% 32px;
+  background-size: 36px 36px, 100% 36px;
 }
 
 button,
@@ -63,16 +64,22 @@ textarea:focus-visible {
 
 .app-shell {
   min-height: 100vh;
-  padding: 20px 24px 56px;
+  padding: 18px 28px 56px;
 }
 
 .app-header {
-  width: min(1180px, 100%);
-  margin: 0 auto 24px;
+  width: min(1260px, 100%);
+  margin: 0 auto 22px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  padding: 10px 14px;
+  border: 1px solid rgba(229, 216, 195, 0.82);
+  border-radius: 18px;
+  background: rgba(255, 253, 247, 0.72);
+  box-shadow: 0 10px 28px rgba(73, 63, 47, 0.05);
+  backdrop-filter: blur(10px);
 }
 
 .brand-button {
@@ -154,20 +161,26 @@ textarea:focus-visible {
 }
 
 .creator-grid {
-  width: min(1180px, 100%);
+  width: min(1260px, 100%);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 440px minmax(0, 1fr);
-  gap: 28px;
+  grid-template-columns: 480px minmax(0, 1fr);
+  gap: 34px;
   align-items: start;
 }
 
 .form-panel {
   display: grid;
-  gap: 18px;
+  gap: 0;
+  padding: 24px 26px 26px;
+  border: 1px solid var(--paper-border);
+  border-radius: 22px;
+  background:
+    linear-gradient(90deg, rgba(232, 155, 93, 0.18) 0 3px, transparent 3px 100%),
+    rgba(255, 253, 247, 0.92);
+  box-shadow: 0 18px 44px rgba(73, 63, 47, 0.08);
 }
 
-.form-section,
 .preview-panel {
   background: rgba(255, 253, 247, 0.88);
   border: 1px solid var(--paper-border);
@@ -175,8 +188,34 @@ textarea:focus-visible {
   box-shadow: 0 10px 28px rgba(73, 63, 47, 0.06);
 }
 
+.form-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 18px;
+}
+
+.form-panel-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.65;
+  text-align: right;
+}
+
 .form-section {
-  padding: 22px;
+  padding: 18px 0 20px;
+  border-top: 1px dashed rgba(123, 113, 101, 0.23);
+}
+
+.form-section:last-child {
+  padding-bottom: 0;
+}
+
+.compact-subsection {
+  border-top: 0;
+  padding-top: 0;
 }
 
 .form-section h2,
@@ -193,7 +232,8 @@ textarea:focus-visible {
 }
 
 .sticky-label,
-.card-label {
+.card-label,
+.sub-label {
   display: inline-flex;
   align-items: center;
   width: fit-content;
@@ -208,10 +248,18 @@ textarea:focus-visible {
   box-shadow: 0 2px 0 rgba(91, 69, 50, 0.08);
 }
 
+.sub-label {
+  min-height: 22px;
+  background: rgba(207, 226, 208, 0.66);
+  color: var(--deep-sage);
+  font-size: 11px;
+  box-shadow: none;
+}
+
 .field-group {
   display: grid;
-  gap: 8px;
-  margin-top: 16px;
+  gap: 7px;
+  margin-top: 12px;
 }
 
 .field-group label,
@@ -239,9 +287,9 @@ textarea {
 }
 
 textarea {
-  min-height: 84px;
+  min-height: 72px;
   resize: vertical;
-  line-height: 1.65;
+  line-height: 1.58;
 }
 
 input::placeholder,
@@ -273,7 +321,7 @@ textarea:focus {
 }
 
 .field-note {
-  margin: 8px 0 0;
+  margin: 6px 0 0;
   color: var(--muted);
   font-size: 12px;
   line-height: 1.65;
@@ -290,7 +338,7 @@ textarea:focus {
 }
 
 .segmented-control button {
-  min-height: 40px;
+  min-height: 38px;
   border: 1px solid transparent;
   border-radius: 10px;
   background: transparent;
@@ -308,12 +356,12 @@ textarea:focus {
 .tag-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 14px;
+  gap: 6px;
+  margin-top: 10px;
 }
 
 .tag-option {
-  min-height: 36px;
+  min-height: 31px;
   display: inline-flex;
   align-items: center;
   gap: 5px;
@@ -321,8 +369,8 @@ textarea:focus {
   border-radius: 999px;
   background: var(--paper);
   color: var(--deep-sage);
-  padding: 6px 11px;
-  font-size: 13px;
+  padding: 5px 9px;
+  font-size: 12px;
   font-weight: 700;
 }
 
@@ -337,25 +385,25 @@ textarea:focus {
 }
 
 .upload-box {
-  margin-top: 14px;
+  margin-top: 10px;
   display: grid;
-  grid-template-columns: 96px 1fr;
-  gap: 16px;
+  grid-template-columns: 74px 1fr;
+  gap: 12px;
   align-items: center;
-  padding: 14px;
+  padding: 10px;
   border: 1px dashed #d8c9b2;
   border-radius: 16px;
   background: rgba(255, 253, 247, 0.7);
 }
 
 .upload-thumb {
-  width: 96px;
-  height: 96px;
+  width: 74px;
+  height: 74px;
   display: grid;
   place-items: center;
   overflow: hidden;
   border: 1px solid var(--paper-border);
-  border-radius: 20px;
+  border-radius: 18px;
   background: #f2eadb;
   color: var(--deep-sage);
 }
@@ -373,7 +421,7 @@ textarea:focus {
 .upload-controls {
   display: flex;
   flex-wrap: wrap;
-  gap: 9px;
+  gap: 7px;
   align-items: center;
 }
 
@@ -387,7 +435,7 @@ textarea:focus {
 .theme-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
+  gap: 7px;
 }
 
 .theme-button,
@@ -397,8 +445,8 @@ textarea:focus {
   background: var(--paper);
   color: var(--charcoal);
   text-align: left;
-  min-height: 44px;
-  padding: 10px;
+  min-height: 40px;
+  padding: 9px 10px;
 }
 
 .theme-button {
@@ -423,7 +471,8 @@ textarea:focus {
 
 .choice-grid {
   display: grid;
-  gap: 8px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
 }
 
 .choice-button {
@@ -441,15 +490,20 @@ textarea:focus {
 }
 
 .preview-panel {
-  padding: 22px;
+  position: sticky;
+  top: 88px;
+  align-self: flex-start;
+  padding: 18px 22px 20px;
+  background:
+    linear-gradient(180deg, rgba(255, 253, 247, 0.96), rgba(255, 253, 247, 0.88)),
+    var(--paper);
+  box-shadow: 0 20px 48px rgba(73, 63, 47, 0.1);
 }
 
 .preview-sticky {
-  position: sticky;
-  top: 18px;
   display: grid;
   justify-items: center;
-  gap: 16px;
+  gap: 14px;
 }
 
 .panel-heading {
@@ -467,7 +521,7 @@ textarea:focus {
 }
 
 .card-scale {
-  width: min(100%, 430px);
+  width: min(100%, 520px);
   margin: 0 auto;
 }
 
@@ -478,7 +532,7 @@ textarea:focus {
 .export-card-shell {
   width: 100%;
   aspect-ratio: 4 / 5;
-  padding: 12px;
+  padding: 14px;
   isolation: isolate;
 }
 
@@ -491,10 +545,12 @@ textarea:focus {
   flex-direction: column;
   gap: 18px;
   border: 1px solid #e5d8c3;
-  border-radius: 28px;
-  background: #fffdf7;
-  box-shadow: 0 18px 40px rgba(73, 63, 47, 0.12);
-  padding: 36px;
+  border-radius: 30px;
+  background:
+    linear-gradient(180deg, rgba(255, 253, 247, 0.98), rgba(255, 251, 241, 0.96)),
+    #fffdf7;
+  box-shadow: 0 22px 46px rgba(73, 63, 47, 0.14);
+  padding: 38px;
   color: var(--charcoal);
 }
 
@@ -506,7 +562,7 @@ textarea:focus {
     linear-gradient(rgba(111, 143, 92, 0.1) 1px, transparent 1px),
     radial-gradient(rgba(73, 99, 63, 0.11) 1px, transparent 1px);
   background-size: 100% 32px, 16px 16px;
-  opacity: 0.42;
+  opacity: 0.34;
 }
 
 .tape {
@@ -519,36 +575,36 @@ textarea:focus {
 }
 
 .tape-top {
-  top: 15px;
-  left: 40px;
-  width: 86px;
-  height: 22px;
+  top: 16px;
+  left: 42px;
+  width: 92px;
+  height: 20px;
   transform: rotate(-3deg);
 }
 
 .tape-side {
   right: 28px;
-  bottom: 88px;
-  width: 62px;
+  bottom: 82px;
+  width: 58px;
   height: 18px;
   transform: rotate(5deg);
 }
 
 .card-top {
   display: grid;
-  grid-template-columns: 172px 1fr;
+  grid-template-columns: 184px 1fr;
   gap: 24px;
   align-items: center;
 }
 
 .profile-photo {
-  width: 172px;
-  height: 172px;
+  width: 184px;
+  height: 184px;
   overflow: hidden;
   border: 1px solid rgba(73, 63, 47, 0.12);
   border-radius: 24px;
   background: var(--theme-soft);
-  box-shadow: 0 7px 20px rgba(73, 63, 47, 0.08);
+  box-shadow: 0 9px 22px rgba(73, 63, 47, 0.1);
 }
 
 .profile-photo[data-shape="circle"] {
@@ -565,14 +621,19 @@ textarea:focus {
 .photo-placeholder {
   width: 100%;
   height: 100%;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 8px;
   color: var(--theme-deep);
+  background:
+    radial-gradient(circle at 34% 28%, rgba(255, 253, 247, 0.72) 0 18%, transparent 19%),
+    linear-gradient(135deg, rgba(255, 253, 247, 0.3), rgba(73, 99, 63, 0.08));
 }
 
 .photo-placeholder span {
-  font-size: 54px;
+  font-size: 58px;
   font-weight: 800;
   line-height: 1;
 }
@@ -597,8 +658,8 @@ textarea:focus {
 .name-block h2 {
   margin: 0;
   color: var(--charcoal);
-  font-size: 34px;
-  line-height: 1.22;
+  font-size: 38px;
+  line-height: 1.18;
   letter-spacing: 0;
   overflow-wrap: anywhere;
 }
@@ -617,16 +678,11 @@ textarea:focus {
   font-size: 14px;
 }
 
-.card-section,
 .memo-block {
   position: relative;
   border: 1px solid rgba(229, 216, 195, 0.82);
   border-radius: 18px;
   background: rgba(255, 253, 247, 0.88);
-}
-
-.statement-section {
-  padding: 20px 22px 18px;
 }
 
 .card-label {
@@ -638,34 +694,41 @@ textarea:focus {
   color: white;
 }
 
-.statement-section p,
 .memo-block p {
-  margin: 12px 0 0;
+  margin: 10px 0 0;
   color: var(--charcoal);
-  font-size: 17px;
-  line-height: 1.72;
+  font-size: 16px;
+  line-height: 1.62;
   overflow-wrap: anywhere;
-}
-
-.statement-section p {
-  font-size: 18px;
-  font-weight: 700;
 }
 
 .memo-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  gap: 13px;
 }
 
 .memo-block {
-  min-height: 128px;
-  padding: 17px;
+  min-height: 114px;
+  padding: 16px;
 }
 
 .talk-block {
   border-color: var(--theme-accent);
   box-shadow: inset 0 0 0 2px rgba(111, 143, 92, 0.12);
+}
+
+.featured-talk {
+  min-height: 104px;
+  padding: 18px 20px;
+  background:
+    linear-gradient(90deg, rgba(207, 226, 208, 0.42), rgba(255, 253, 247, 0.9)),
+    rgba(255, 253, 247, 0.92);
+}
+
+.featured-talk p {
+  font-size: 18px;
+  font-weight: 700;
 }
 
 .card-tags {
@@ -699,18 +762,18 @@ textarea:focus {
 }
 
 .notebook-card[data-layout="info"] {
-  gap: 15px;
-  padding: 34px;
+  gap: 14px;
+  padding: 36px;
 }
 
 .notebook-card[data-layout="info"] .card-top {
-  grid-template-columns: 130px 1fr;
+  grid-template-columns: 140px 1fr;
   gap: 22px;
 }
 
 .notebook-card[data-layout="info"] .profile-photo {
-  width: 130px;
-  height: 130px;
+  width: 140px;
+  height: 140px;
 }
 
 .notebook-card[data-layout="info"] .name-block h2 {
@@ -718,7 +781,7 @@ textarea:focus {
 }
 
 .notebook-card[data-layout="info"] .memo-grid {
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
 
@@ -783,7 +846,7 @@ textarea:focus {
 }
 
 .export-button {
-  width: min(100%, 430px);
+  width: min(100%, 520px);
   min-height: 48px;
 }
 
@@ -818,6 +881,7 @@ textarea:focus {
     padding-top: 10px;
   }
 
+  .preview-panel,
   .preview-sticky {
     position: static;
   }
@@ -848,14 +912,32 @@ textarea:focus {
     font-size: 24px;
   }
 
-  .form-section,
   .preview-panel {
     border-radius: 16px;
   }
 
-  .form-section,
   .preview-panel {
     padding: 18px;
+  }
+
+  .form-panel {
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  .form-panel-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 14px;
+  }
+
+  .form-panel-head p {
+    text-align: left;
+  }
+
+  .form-section {
+    padding: 16px 0 18px;
   }
 
   .creator-grid {
@@ -872,6 +954,10 @@ textarea:focus {
   }
 
   .theme-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .choice-grid {
     grid-template-columns: 1fr;
   }
 
@@ -930,18 +1016,18 @@ textarea:focus {
     font-size: 12px;
   }
 
-  .statement-section {
-    padding: 13px;
-  }
-
-  .statement-section p,
   .memo-block p {
     margin-top: 8px;
     font-size: 13px;
     line-height: 1.55;
   }
 
-  .statement-section p {
+  .featured-talk {
+    min-height: 0;
+    padding: 13px;
+  }
+
+  .featured-talk p {
     font-size: 14px;
   }
 
